@@ -1,0 +1,1018 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" xml:lang="en" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title></title>
+<!-- base href="http://1group.co.nz/CorpconsDEVELOPMENT/admin/" -->
+<link rel="stylesheet" type="text/css" href="index.php_files/stylesheet.css">
+<link rel="stylesheet" type="text/css" href="index.php_files/tree.css">
+<script type="text/javascript" src="index.php_files/jquery-1.js"></script>
+<script type="text/javascript" src="index.php_files/jquery-ui-1.js"></script>
+
+<script type="text/javascript" src="index.php_files/jquery_005.js"></script>
+<script type="text/javascript" src="index.php_files/jquery_003.js"></script>
+<script type="text/javascript" src="index.php_files/tabs.js"></script>
+<script type="text/javascript" src="index.php_files/superfish.js"></script>
+<script type="text/javascript" src="index.php_files/JQuery.js"></script>
+<script type="text/javascript" src="index.php_files/modalpopup.js"></script>
+<!-- webme - ORDERS AT-A-GLANCE - mod - start -->
+<!-- STUFF YOU NEED FOR BEAUTYTIPS -->
+	<script src="index.php_files/jquery_002.js" type="text/javascript" charset="utf-8"></script>
+	<script src="index.php_files/jquery_006.js" type="text/javascript" charset="utf-8"></script>
+	<!--[if IE]><script src="view/javascript/jquery/bt/excanvas.js" type="text/javascript" charset="utf-8"></script><![endif]-->
+	<script src="index.php_files/jquery.js" type="text/javascript" charset="utf-8"></script>
+<!-- /STUFF -->
+<!--[if IE 7]>
+<link rel="stylesheet" type="text/css" href="view/stylesheet/ie7.css" />
+<![endif]-->
+<!-- webme - ORDERS AT-A-GLANCE - mod - end -->
+
+<script type="text/javascript">
+
+//-----------------------------------------
+// Confirm Actions (delete, uninstall)
+//-----------------------------------------
+
+
+
+$(document).ready(function(){
+	
+    // Confirm Delete
+    $('#form').submit(function(){
+        if ($(this).attr('action').indexOf('delete',1) != -1) {
+            if (!confirm('Delete/Uninstall cannot be undone! Are you sure you want to do this?')) {
+                return false;
+            }
+        }
+    });
+    	
+    // Confirm Uninstall
+    $('a').click(function(){
+        if ($(this).attr('href') != null && $(this).attr('href').indexOf('uninstall', 1) != -1) {
+            if (!confirm('Delete/Uninstall cannot be undone! Are you sure you want to do this?')) {
+                return false;
+            }
+        }
+    });
+	
+	$(".sub-links").hover(function(){			
+		$('#main-nav > li').find(".dropdown").hide(1);
+				 //alert('test');
+		},function(){			
+		$('#main-nav > li').find(".dropdown").show(0);
+				 
+	});	
+	/////////navigation coding start/////////
+	$("#main-nav a.main-link-sale-trans").click(function(){			
+			$.cookie('selected_tab','sale-trans',{expires: 1});
+			//var a = $(this).parents('ul > li').find('a.selected').parent().attr('id');
+			$(this).parents('ul').find('a').removeClass('select');
+			$(this).parents('ul > li').find('a.selected').addClass('select');						
+			$("#sub-link-bar").show(1);	
+			var ul_height_li = $("#sale-trans").height();
+			var height_v_li = ul_height_li-10;		
+			if(ul_height_li > 60)
+			{
+				height_v_li = ul_height_li-3;
+			}									 
+			$("#sub-link-bar").animate({
+				height: height_v_li+"px"
+			});			
+			$(".sub-links").hide(1);
+			$("#sale-trans").fadeIn(1);
+			/*$("#body").attr('scroll','');
+			$("#body").css('overflow','');
+			$("#body").css('height','auto');*/		
+		});	
+		
+		$("#main-nav a.main-link-products-trans").click(function(){
+			$.cookie('selected_tab','products-trans',{expires: 1});
+			$(this).parents('ul').find('a').removeClass('select');
+			$(this).parents('ul > li').find('a.selected').addClass('select');	
+			$("#sub-link-bar").show(1);
+			var ul_height_li = $("#products-trans").height();
+			var height_v_li = ul_height_li-10;		
+			if(ul_height_li > 60)
+			{
+				height_v_li = ul_height_li-3;
+			}														 
+			$("#sub-link-bar").animate({
+				height: height_v_li+"px"
+			});						
+			$(".sub-links").hide(1);
+			$("#products-trans").fadeIn(1);
+			/*$("#body").attr('scroll','');
+			$("#body").css('overflow','');
+			$("#body").css('height','auto');*/		
+		});	
+		
+		$("#main-nav a.main-link-mps-trans").click(function(){
+			$.cookie('selected_tab','mps-trans',{expires: 1});
+			$(this).parents('ul').find('a').removeClass('select');
+			$(this).parents('ul > li').find('a.selected').addClass('select');	
+			$("#sub-link-bar").show(1);
+			var ul_height_li = $("#mps-trans").height();
+			var height_v_li = ul_height_li-10;		
+			if(ul_height_li > 60)
+			{
+				height_v_li = ul_height_li-3;
+			}														 
+			$("#sub-link-bar").animate({
+				height: height_v_li+"px"
+			});						
+			$(".sub-links").hide(1);
+			$("#mps-trans").fadeIn(1);
+			/*$("#body").attr('scroll','');
+			$("#body").css('overflow','');	
+			$("#body").css('height','auto');*/	
+		});	
+		
+		$("#main-nav a.main-link-customer_vendor-trans").click(function(){
+			$.cookie('selected_tab','customer_vendor-trans',{expires: 1});
+			$(this).parents('ul').find('a').removeClass('select');
+			$(this).parents('ul > li').find('a.selected').addClass('select');	
+			$("#sub-link-bar").show(1);	
+			var ul_height_li = $("#customer_vendor-trans").height();
+			var height_v_li = ul_height_li-10;		
+			if(ul_height_li > 60)
+			{
+				height_v_li = ul_height_li-3;
+			}													 
+			$("#sub-link-bar").animate({
+				height: height_v_li+"px"
+			});						
+			$(".sub-links").hide(1);
+			$("#customer_vendor-trans").fadeIn(1);
+			/*$("#body").attr('scroll','');
+			$("#body").css('overflow','');	
+			$("#body").css('height','auto');*/	
+		});	
+		$("#main-nav a.main-link-reports-trans").click(function(){
+			$.cookie('selected_tab','reports-trans',{expires: 1});
+			$(this).parents('ul').find('a').removeClass('select');
+			$(this).parents('ul > li').find('a.selected').addClass('select');	
+			$("#sub-link-bar").show(1);	
+			var ul_height_li = $("#reports-trans").height();
+			var height_v_li = ul_height_li-10;		
+			if(ul_height_li > 60)
+			{
+				height_v_li = ul_height_li-3;
+			}													 
+			$("#sub-link-bar").animate({
+				height: height_v_li+"px"
+			});						
+			$(".sub-links").hide(1);
+			$("#reports-trans").fadeIn(1);
+			/*$("#body").attr('scroll','');
+			$("#body").css('overflow','');	
+			$("#body").css('height','auto');	*/
+		});	
+		
+		$("#main-nav a.main-link-purchasing-trans").click(function(){
+			$.cookie('selected_tab','purchasing-trans',{expires: 1});
+			$(this).parents('ul').find('a').removeClass('select');	
+			$(this).parents('ul > li').find('a.selected').addClass('select');
+			$("#sub-link-bar").show(1);	
+			var ul_height_li = $("#purchasing-trans").height();
+			var height_v_li = ul_height_li-10;		
+			if(ul_height_li > 60)
+			{
+				height_v_li = ul_height_li-3;
+			}													 
+			$("#sub-link-bar").animate({
+				height: height_v_li+"px"
+			});						
+			$(".sub-links").hide(1);
+			$("#purchasing-trans").fadeIn(1);
+			/*$("#body").attr('scroll','');
+			$("#body").css('overflow','');	
+			$("#body").css('height','auto');	*/
+		});	
+		
+		$("#main-nav a.main-link-marketing-trans").click(function(){
+			$.cookie('selected_tab','marketing-trans',{expires: 1});
+			$(this).parents('ul').find('a').removeClass('select');
+			$(this).parents('ul > li').find('a.selected').addClass('select');	
+			$("#sub-link-bar").show(1);
+			var ul_height_li = $("#marketing-trans").height();
+			var height_v_li = ul_height_li-10;		
+			if(ul_height_li > 60)
+			{
+				height_v_li = ul_height_li-3;
+			}														 
+			$("#sub-link-bar").animate({
+				height: height_v_li+"px"
+			});						
+			$(".sub-links").hide(1);
+			$("#marketing-trans").fadeIn(1);
+			/*$("#body").attr('scroll','');
+			$("#body").css('overflow','');	
+			$("#body").css('height','auto');	*/
+		});	
+		$("#main-nav a.main-link-account-trans").click(function(){
+			$.cookie('selected_tab','account-trans',{expires: 1});
+			$(this).parents('ul').find('a').removeClass('select');
+			$(this).parents('ul > li').find('a.selected').addClass('select');	
+			$("#sub-link-bar").show(1);	
+			var ul_height_li = $("#account-trans").height();
+			var height_v_li = ul_height_li-10;		
+			if(ul_height_li > 60)
+			{
+				height_v_li = ul_height_li-3;
+			}													 
+			$("#sub-link-bar").animate({
+				height: height_v_li+"px"
+			});						
+			$(".sub-links").hide(1);
+			$("#account-trans").fadeIn(1);
+			/*$("#body").attr('scroll','');
+			$("#body").css('overflow','');	
+			$("#body").css('height','auto');	*/
+		});
+		$("#main-nav a.main-link-users-trans").click(function(){
+			$.cookie('selected_tab','users-trans',{expires: 1});
+			$(this).parents('ul').find('a').removeClass('select');
+			$(this).parents('ul > li').find('a.selected').addClass('select');	
+			$("#sub-link-bar").show(1);	
+			var ul_height_li = $("#users-trans").height();
+			var height_v_li = ul_height_li-10;		
+			if(ul_height_li > 60)
+			{
+				height_v_li = ul_height_li-3;
+			}													 
+			$("#sub-link-bar").animate({
+				height: height_v_li+"px"
+			});						
+			$(".sub-links").hide(1);
+			$("#users-trans").fadeIn(1);
+			/*$("#body").attr('scroll','');
+			$("#body").css('overflow','');	
+			$("#body").css('height','auto');*/	
+		});
+		$("#main-nav a.main-link-setting-setup").click(function(){
+			$.cookie('selected_tab','setting-setup',{expires: 1});
+			$(this).parents('ul').find('a').removeClass('select');
+			$(this).parents('ul > li').find('a.selected').addClass('select');	
+			$("#sub-link-bar").show(1);	
+			var ul_height_li = $("#setting-setup").height();
+			var height_v_li = ul_height_li-10;		
+			if(ul_height_li > 60)
+			{
+				height_v_li = ul_height_li-3;
+			}													 
+			$("#sub-link-bar").animate({
+				height: height_v_li+"px"
+			});						
+			$(".sub-links").hide(1);
+			$("#setting-setup").fadeIn(1);	
+			/*$("#body").attr('scroll','');
+			$("#body").css('overflow','');
+			$("#body").css('height','auto');*/
+				
+		});
+		
+		$("#main-nav a.main-link-warehouse-trans").click(function(){
+			$.cookie('selected_tab','warehouse-trans',{expires: 1});
+			$(this).parents('ul').find('a').removeClass('select');
+			$(this).parents('ul > li').find('a.selected').addClass('select');	
+			$("#sub-link-bar").show(1);	
+			var ul_height_li = $("#warehouse-trans").height();
+			var height_v_li = ul_height_li-10;		
+			if(ul_height_li > 60)
+			{
+				height_v_li = ul_height_li-3;
+			}													 
+			$("#sub-link-bar").animate({
+				height: height_v_li+"px"
+			});						
+			$(".sub-links").hide(1);
+			$("#warehouse-trans").fadeIn(1);	
+			/*$("#body").attr('scroll','no');
+			$("#body").css('overflow','hidden');
+			$("#body").css('height',600);*/	
+		});
+		$("#main-nav a.main-link-warehouse-report").click(function(){
+			$.cookie('selected_tab','warehouse-report',{expires: 1});
+			$(this).parents('ul').find('a').removeClass('select');
+			$(this).parents('ul > li').find('a.selected').addClass('select');
+			$("#sub-link-bar").show(1);	
+			var ul_height_li = $("#warehouse-report").height();
+			var height_v_li = ul_height_li-10;		
+			if(ul_height_li > 60)
+			{
+				height_v_li = ul_height_li-3;
+			}													 
+			$("#sub-link-bar").animate({
+				height: height_v_li+"px"
+			});						
+			$(".sub-links").hide(1);
+			$("#warehouse-report").fadeIn(1);	
+			/*$("#body").attr('scroll','no');
+			$("#body").css('overflow','hidden');
+			$("#body").css('height',600);*/	
+		});
+		$("#main-nav a.main-link-warehouse-setup").click(function(){
+			$.cookie('selected_tab','warehouse-setup',{expires: 1});
+			$(this).parents('ul').find('a').removeClass('select');
+			$(this).parents('ul > li').find('a.selected').addClass('select');	
+			$("#sub-link-bar").show(1);	
+			var ul_height_li = $("#warehouse-setup").height();
+			var height_v_li = ul_height_li-10;		
+			if(ul_height_li > 60)
+			{
+				height_v_li = ul_height_li-3;
+			}													 
+			$("#sub-link-bar").animate({
+				height: height_v_li+"px"
+			});						
+			$(".sub-links").hide(1);
+			$("#warehouse-setup").fadeIn(1);	
+			/*$("#body").attr('scroll','no');
+			$("#body").css('overflow','hidden');
+			$("#body").css('height',600);	*/	
+		});
+		
+		///////// navigation coding end ///////
+		
+		
+		/*$('a[id^="addTab-"]').click(function(){
+			
+			if($(this).attr('id').split('-')[2]==1 ||$(this).attr('id').split('-')[2]==2 || $(this).attr('id').split('-')[2]==3){
+				//alert('test');
+				$("#body").attr('scroll','no');
+				$("#body").css('overflow','hidden');
+			}else{
+				//alert('test2');
+				$("#body").attr('scroll','');
+				$("#body").css('overflow','');
+			}
+				
+		});*/
+		
+});
+</script>
+
+
+<script type="text/javascript">
+var timeout         = 0;
+var closetimer		= 0;
+var ddmenuitem      = 0;
+
+
+function jsddm_open()
+{	jsddm_close();
+	jsddm_canceltimer();
+	var userAgent = navigator.userAgent.toString().toLowerCase();		
+	if (userAgent.indexOf('msie 7.0') != -1) 
+	{
+	var dpos = $(this).position().left;
+	ddmenuitem = $(this).find(".dropdown").eq(0).css({'visibility':'visible','left':dpos+87});
+	}
+
+	else 
+	{
+	ddmenuitem = $(this).find(".dropdown").eq(0).css('visibility', 'visible');
+	}
+	
+	
+}
+
+function jsddm_close()
+{
+	if(ddmenuitem) ddmenuitem.css('visibility', 'hidden');
+}
+
+function jsddm_timer()
+{	
+	closetimer = window.setTimeout(jsddm_close, timeout);	
+}
+
+function jsddm_canceltimer()
+{	if(closetimer)
+	{	window.clearTimeout(closetimer);
+		closetimer = null;
+	}
+}
+
+$(document).ready(function()
+{	
+	$('#main-nav > li:has(a.selected)').bind('mouseover', jsddm_open);
+	
+	$('#main-nav > li:has(a.selected)').bind('mouseout',  jsddm_timer);	
+	
+	if(($.cookie('selected_tab') != '') && ($.cookie('selected_tab') != null))
+	{
+	
+		var selected_tab = $.cookie('selected_tab');
+		var selected_tab_arr = selected_tab.split('-');
+		var ul_height = $("#"+selected_tab).height();		
+		var height_v = ul_height-5;			
+		var userAgent = navigator.userAgent.toString().toLowerCase();		
+		if (userAgent.indexOf('msie 7.0') != -1) {
+		
+			if(height_v > 40)
+			{
+				height_v = 75;
+			}
+		
+		}
+		else if(ul_height > 60)
+		{
+			height_v = ul_height-3;
+		}
+		$("#"+selected_tab_arr[0]).find('a.selected').addClass('select');
+		$("#sub-link-bar").show(1);										 
+		$("#sub-link-bar").animate({
+			height:height_v+'px'
+		});						
+		$(".sub-links").hide(1);
+			
+		$("#"+selected_tab).fadeIn(1);
+		/////Coding to set selected sub links
+		route = getURLVar('route');	
+		
+			part = route.split('/');
+			
+			url = part[0];
+			
+			if (part[1]) {
+				url += '/' + part[1];
+			}
+			
+			var a = $('a[href*=\'' + url + '\']').parents('li').addClass('sublink-select');			
+		
+		///End here/////
+	}
+	else
+	{
+		$("#sale").find('a.selected').addClass('select');
+	}
+	
+	
+	<!--coding START for warehouse grid-->
+	
+		$("a[id*='addTab-1']").click(function(){
+			route = getURLVar('route');	
+		
+			part = route.split('/');
+			
+			url = part[0];
+			//alert(part[1]);
+			
+			if (url != 'dashboard') {
+				
+				if(part[1] != 'common')
+				{
+					route1 =	'dashboard/common';
+					
+					var urlHalves1 = String(document.location).replace(route, route1);
+					
+					window.location = urlHalves1;
+
+				}
+				
+			}			
+						
+		});
+	
+	<!--coding END for warehouse grid-->
+ 
+	
+
+	
+});
+</script>
+
+</head>
+<body id="body">
+<div id="blockui" style="display:none; width:300px; border:4px solid #000000;-moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;"><div style="padding:20px 20px 20px 100px ;">Proceesing...</div></div>
+<div id="container">
+<div id="header">
+  <div class="div1">
+    <div class="div2"><table cellpadding="0" cellspacing="4" border="0"><tbody><tr><form name="top"></form> <td valign="middle"><span><input name="search_box" value="Quick Search..." onfocus="if (this.value == 'Quick Search...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Quick Search...';}" type="text"></span></td> <td valign="middle"> <span><input name="select_value" type="text"></span></td> <td><span><input src="index.php_files/button.png" style="margin-top: 4px;" type="image"></span></td> </tr></tbody></table></div>
+        <div class="div3">You are logged in as <span>admin</span><br>Wednesday , 29 August , 2012 04:47:23 pm</div>
+      </div>
+    <!--//Sub links start here//-->
+   <ul id="sale-trans" class="sub-links">
+              <li><a id="addTab-1-0-1" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=sale/manageorder&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Manage Orders</a><span><img src="index.php_files/split.png" alt=""></span></li>
+              
+              <li><a id="addTab-1-0-2" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=sale/order&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Orders Quotes</a><span><img src="index.php_files/split.png" alt=""></span></li>              <li><a id="addTab-1-0-3" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=sale/rma&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">RMA</a><span><img src="index.php_files/split.png" alt=""></span></li>
+              
+              <li><a id="addTab-1-0-4" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=sale/abandoned_order&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Abandoned Orders</a><span><img src="index.php_files/split.png" alt=""></span></li>
+              <li><a id="addTab-1-0-5" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=sale/return&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Returns</a><span><img src="index.php_files/split.png" alt=""></span></li>               <!--        //Newsletter Subscribers-->
+              <li><a id="addTab-1-0-6" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=sale/newssubscribers&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Newsletter Subscribers</a><span><img src="index.php_files/split.png" alt=""></span></li>
+              <!--        //Newsletter Subscribers-->                        
+              <li><a id="addTab-1-0-7" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=sale/contact&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Mail</a><span><img src="index.php_files/split.png" alt=""></span></li>              
+              <li><a id="addTab-1-0-11" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=sale/salesrep&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Account Manager</a><span><img src="index.php_files/split.png" alt=""></span></li>
+              <li><a id="addTab-1-0-8" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=sale/affiliate&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Affiliates</a><span><img src="index.php_files/split.png" alt=""></span></li>              
+              <li><a id="addTab-1-0-9" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=sale/coupon&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Coupons</a><span><img src="index.php_files/split.png" alt=""></span></li>              
+              <li style="margin-top:3px;"><a id="addTab-1-0-10" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=catalog/po&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Purchase Order</a></li>         </ul>
+        <!-- Warehouse sublinks-->
+          <!--///Sub Links//-->
+           <ul style="display: block;" id="warehouse-trans" class="sub-links">
+          	<li><nobr><a id="addTab-1-1-1" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=warehouse/physical_inventory&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Physical Inventory</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>
+            <li><nobr><a id="addTab-1-1-2" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=warehouse/goods_movement&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Goods Movements</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>
+            <li><nobr><a id="addTab-1-1-3" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=warehouse/incoming_consignment&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Incoming Consignment</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>
+            <li><nobr><a id="addTab-1-1-4" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=warehouse/outgoing_consignment&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Outgoing Consignment</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>
+            <!--<li><nobr><a id="addTab-1-1-5" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=warehouse/generate_average_cost&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Generate Avergae Costs</a><span><img src="view/image/split.png" alt="" /></span></nobr></li>-->
+            <li style="margin-top:3px;"><nobr><a id="addTab-1-1-6" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=warehouse/goods_transaction&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Goods Transaction</a></nobr></li>
+          </ul>
+          <ul id="warehouse-report" class="sub-links">
+          	<li><nobr><a id="addTab-1-2-1" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=warehouse/expiration_date_report&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Expiration Date Report</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>
+            <li><nobr><a id="addTab-1-2-2" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=warehouse/tracebility_report&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Tracebility Report</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>
+            <li><nobr><a id="addTab-1-2-3" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=warehouse/warehouse_control_report&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Warehouse Control Report</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>
+            <li><nobr><a id="addTab-1-2-4" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=warehouse/stock_report&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Stock Report</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>
+            <li><nobr><a id="addTab-1-2-5" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=warehouse/valued_stock_report&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Valued Stock Report</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>
+            <li style="margin-top:3px;"><nobr><a id="addTab-1-2-6" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=warehouse/product_movement_report&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Product Movements Report</a></nobr></li><nobr>
+          </nobr></ul><nobr>
+          </nobr><ul id="warehouse-setup" class="sub-links"><nobr>
+          	</nobr><li><nobr></nobr><nobr><a id="addTab-1-3-1" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=warehouse/storage_bin&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Warehouse and Storage Bins</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>
+            <li style="margin-top:3px;"><nobr><a id="addTab-1-3-2" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=warehouse/freight_company&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Freight Company</a></nobr></li>
+          </ul>          
+          <!--//Sub Links products//-->        
+        <ul id="products-trans" class="sub-links">
+        		<li><nobr><a id="addTab-1-4-1" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=catalog/catalog_product&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Catalog Product</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>
+       			<!--<div><li><nobr><a  id="addTab-1-4-2"  rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=catalog/category&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Categories</a><span><img src="view/image/split.png" alt="" /></span></li>                
+       			<li><nobr><a  id="addTab-1-4-3"  rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=catalog/product&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Products</a><span><img src="view/image/split.png" alt="" /></span></nobr></li>                </div>-->
+       			<li><nobr><a id="addTab-1-4-4" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=catalog/manufacturer&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Manufacturers</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>                
+       			<li><nobr><a id="addTab-1-4-5" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=catalog/download&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Downloads</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>                
+       			<li><nobr><a id="addTab-1-4-6" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=catalog/review&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Reviews</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>                
+       			<li><nobr><a id="addTab-1-4-7" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=catalog/information&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Information</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li> 
+                     
+                 <li><nobr><a id="addTab-1-4-8" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=catalog/attribute&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Attributes</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>                
+                <li><nobr><a id="addTab-1-4-9" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=catalog/attribute_group&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Attribute Groups</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>                
+                <li><nobr><a id="addTab-1-4-10" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=catalog/quick_product&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Quick Products Update</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>
+                  <!--code start-->
+                <li><nobr><a id="addTab-1-4-11" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=catalog/promotags&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Promotional Tags</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>
+                  <!--code end-->              
+                <li style="margin-top:3px;"><nobr><a id="addTab-1-4-12" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=catalog/option&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Options</a></nobr></li>   
+       			
+       		</ul>
+            <!--///Sub Links Start Maps//-->
+         <ul id="mps-trans" class="sub-links">  
+         	<li><nobr><a id="addTab-1-5-1" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=mps/client_contract&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Client Contracts</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>
+            <li><nobr><a id="addTab-1-5-2" rel="">Settings</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>
+         </ul> 
+          <!--//Start Sub Links customer vendors//-->
+        <ul id="customer_vendor-trans" class="sub-links">
+            	<li><nobr><a id="addTab-1-6-1" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=sale/customer&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Customers</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>                
+            	<li><nobr><a id="addTab-1-6-2" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=sale/customer_group&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Customer Groups</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>                                <li><nobr><a id="addTab-1-6-3" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=catalog/vendor&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Vendor</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>
+                                <li><nobr><a id="addTab-1-6-4" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=sale/dealer&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Dealers</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>
+                <li><nobr><a id="addTab-1-6-5" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=sale/dealer_group&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Dealer Group<span style="padding-left:15px;"><img src="index.php_files/split.png" alt=""></span></a></nobr></li>
+        </ul>  
+         <!--//Start Sub Links Reports//-->          
+          <ul id="reports-trans" class="sub-links">          
+           <li><nobr><a id="addTab-1-7-1" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=report/export&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Sales Reports</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>           
+           <li><nobr><a id="addTab-1-7-14" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=report/sale_salesrep&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Account Manager</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>
+            <li><nobr><a id="addTab-1-7-2" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=report/sale_order&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Orders Reports</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>            
+            <li><nobr><a id="addTab-1-7-3" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=report/sale_tax&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Tax Reports</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>            
+            <li><nobr><a id="addTab-1-7-4" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=report/sale_shipping&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Shipping</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>            
+            <li><nobr><a id="addTab-1-7-5" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=report/sale_return&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Returns Reports</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>            
+            <li><nobr><a id="addTab-1-7-6" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=report/sale_coupon&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Coupons Reports</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>                          
+               <!-- Added by Kedge Group for Product Bundle Report V1.0 -->
+            <li><nobr><a id="addTab-1-7-7" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=report/bundle&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Bundled Products</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>
+                <!--end report bundle-->
+                              
+            <li><nobr><a id="addTab-1-7-8" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=report/product_viewed&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Products View</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>            
+            <li><nobr><a id="addTab-1-7-9" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=report/product_purchased&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Products Viewed</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>                          
+            <li><nobr><a id="addTab-1-7-10" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=report/customer_order&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Customers Orders</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>            
+            <li><nobr><a id="addTab-1-7-11" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=report/customer_reward&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Customers Reward Points</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>            
+            <li><nobr><a id="addTab-1-7-12" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=report/customer_credit&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Customers Credit</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>                         
+            <li><nobr><a id="addTab-1-7-13" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=report/affiliate_commission&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Affiliates Commission</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>           
+            <li><nobr><a id="addTab-1-7-14" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=report/credit_note_report&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Credit Note</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>            
+            <li><nobr><a id="addTab-1-7-15" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=report/top_selling_product&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Top Selling Product</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>            
+            <li><nobr><a id="addTab-1-7-16" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=report/sales_analysis&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Sales Analysis</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>            
+            <li><nobr><a id="addTab-1-7-17" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=report/active_customer_reports&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Active Customer</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>            
+            <li><nobr><a id="addTab-1-7-18" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=report/customer_listing_report&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Customer Listing</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>            
+            <li><nobr><a id="addTab-1-7-19" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=report/parent_company_report&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Parent Company</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>            
+            <li><nobr><a id="addTab-1-7-20" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=report/quotes_stat&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Customer Quotes Statistics</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>            
+            <li><nobr><a id="addTab-1-7-21" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=report/transaction_report&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Transaction Report</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>            
+            <li><nobr><a id="addTab-1-7-22" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=report/transaction_summary_gl_code&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Transaction Summary GL</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>            
+            <li><nobr><a id="addTab-1-7-23" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=report/transaction_summary_account&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Transaction Summary AC</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>            
+           <li><nobr><a id="addTab-1-7-24" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=report/consolidated_tax_invoice&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Consolidated Tax Invoice</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>          
+           <li><nobr><a id="addTab-1-7-25" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=report/customer_spam_report&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Customer Spam</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>           
+           <li><nobr><a id="addTab-1-7-26" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=report/inwards_goods_report&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Inwards Goods</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>           
+           <li><nobr><a id="addTab-1-7-27" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=report/purchase_order_report&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Purchase Order Report</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>           
+           <li><nobr><a id="addTab-1-7-28" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=report/freight_detail_report&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Freight Detail</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>           
+           <li><nobr><a id="addTab-1-7-29" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=report/price_change_report&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Price Change</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>           
+           <li><nobr><a id="addTab-1-7-30" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=report/stock_alternate_part_report&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Stock Alternate</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>           
+           <li><nobr><a id="addTab-1-7-31" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=report/six_percent_discount_report&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">6 Percent Discount</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>           
+           <li><nobr><a id="addTab-1-7-32" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=report/order_fullfilment_report&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Order Fullfilment</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>           
+            
+           </ul>
+          <!--//Start Sub Links marketing//-->
+        <ul id="marketing-trans" class="sub-links">        
+          	<li><nobr><a id="addTab-1-9-1" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=design/banner&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Banners</a></nobr></li>            
+        </ul>
+        
+         <!-- //Start Sub Links Account//-->
+       <ul id="account-trans" class="sub-links">             	   
+       </ul>
+                 
+          <ul id="users-trans" class="sub-links">
+          
+          	<li><a id="addTab-1-11-1" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=user/user&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Users</a><span><img src="index.php_files/split.png" alt=""></span></li>            
+            <li style="margin-top:3px;"><a id="addTab-1-11-1" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=user/user_permission&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">User Groups</a></li>            
+          </ul>
+        
+         <ul id="purchasing-trans" class="sub-links">
+         		<li style="margin-top:3px;"><a id="addTab-1-0-8" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=catalog/po&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Purchase Order</a></li>                <!--<li><nobr><a href="" rel="">Purchase Order</a></nobr></li>-->
+            </ul>           
+         <!-- //Start Sub Links//-->             
+        <ul id="setting-setup" class="sub-links">        
+            	<li><nobr><a id="addTab-1-12-1" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=setting/store&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Settings</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>            	<li><nobr><a id="addTab-1-12-2" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=extension/module&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Modules</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>                <li><nobr><a id="addTab-1-12-3" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=extension/shipping&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Shippings</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>                
+                <li><nobr><a id="addTab-1-12-4" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=extension/payment&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Payments</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>                <li><nobr><a id="addTab-1-12-5" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=extension/total&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Order Totals</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>                <li><nobr><a id="addTab-1-12-6" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=extension/feed&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Product Feeds</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>                <li><nobr><a id="addTab-1-12-7" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=localisation/language&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Languages</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>                
+              	<li><nobr><a id="addTab-1-12-8" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=localisation/currency&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Currencies</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>                
+              	<li><nobr><a id="addTab-1-12-9" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=localisation/stock_status&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Stock Statuses</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>                
+              	<li><nobr><a id="addTab-1-12-10" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=localisation/order_status&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Order Statuses</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>                
+              	<li><nobr><a id="addTab-1-12-1" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=localisation/po_status&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Purchase Order status</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>
+                
+                <li><nobr><a id="addTab-1-12-11" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=localisation/return_status&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Return Statuses</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>                
+                <li><nobr><a id="addTab-1-12-12" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=localisation/return_action&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Return Actions</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>                
+                <li><nobr><a id="addTab-1-12-13" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=localisation/return_reason&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Return Reasons</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>              
+                
+                <li><nobr><a id="addTab-1-12-14" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=localisation/country&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Countries</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>              	<li><a id="addTab-1-12-15" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=localisation/zone&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Zones</a><span><img src="index.php_files/split.png" alt=""></span></li>              	<li><nobr><a id="addTab-1-12-16" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=localisation/geo_zone&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Geo Zones</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>                
+                <li><nobr><a id="addTab-1-12-17" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=localisation/tax_class&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Tax Classes</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>                
+                <li><nobr><a id="addTab-1-12-18" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=localisation/tax_rate&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Tax Rates</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>                
+                <li><nobr><a id="addTab-1-12-19" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=localisation/length_class&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Length Classes</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>                
+              	<li><nobr><a id="addTab-1-12-20" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=localisation/weight_class&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Weight Classes</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>                
+                <li><nobr><a id="addTab-1-12-21" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=tool/error_log&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Error Logs</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>                
+          		<li><nobr><a id="addTab-1-12-22" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=tool/backup&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Backup OR Restore</a><span><img src="index.php_files/split.png" alt=""></span></nobr></li>                <li style="margin-top:3px;"><nobr><a id="addTab-1-12-23" rel="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=design/layout&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Design Layouts</a></nobr></li>        	</ul> 
+                     
+        <!--//Sub links end here//-->
+        
+   	<div class="nav-bg">
+ 	  <ul id="main-nav">
+       	  
+         <li id="sale">        
+         <a class="selected">Sales</a> <span><img src="index.php_files/top_nav_img.png" alt=""></span>            
+         	 <ul class="dropdown" style="padding-left: 0;margin-top:0px;position: absolute;width:110px;padding-top:0px; visibility:hidden;">
+                <li><a class="main-link-sale-trans">Transactions</a></li>
+                <li><a class="main-link-sale-report">Reports</a></li>
+                <li><a class="main-link-sale-setup">Setup</a></li>
+            </ul>
+         </li> 
+                           <li id="warehouse"><a class="selected select">Warehouse/Dispatch</a><span><img src="index.php_files/top_nav_img.png" alt=""></span>
+          <ul class="dropdown" style="padding-left: 0;margin-top:0px;position: absolute;width:110px;padding-top:0px; visibility:hidden;">
+                <li>
+                	<a class="main-link-warehouse-trans">Transactions</a>                                       
+                </li>
+                <li><a class="main-link-warehouse-report">Reports</a></li>
+                <li><a class="main-link-warehouse-setup">Setup</a></li>
+          </ul>
+          </li>         
+                 
+                <li id="products"><a class="selected">Products</a> <span><img src="index.php_files/top_nav_img.png" alt=""></span>       	
+        	<ul class="dropdown" style="padding-left: 0;margin-top:0px;position: absolute;width:110px;padding-top:0px; visibility:hidden;">
+                <li><a class="main-link-products-trans">Transactions</a></li>                
+                <li><a class="main-link">Reports</a></li>
+                <li><a class="main-link">Setup</a></li>
+            </ul>
+        </li>
+        
+                
+        <li id="mps"><a class="selected">MPS</a><span><img src="index.php_files/top_nav_img.png" alt=""></span>
+           
+            <ul class="dropdown" style="padding-left: 0;margin-top:0px;position: absolute;width:110px;padding-top:0px; visibility:hidden;">			
+                    <li><a class="main-link-mps-trans">Transactions</a></li>
+                    <li><a>Reports</a></li>
+                    <li><a>Setup</a></li>
+            </ul>
+        </li>        
+                <li id="customer_vendor"><a class="selected">Customers/Vendors</a> <span><img src="index.php_files/top_nav_img.png" alt=""></span>          
+          <ul class="dropdown" style="padding-left: 0;margin-top:0px;position: absolute;width:110px;padding-top:0px; visibility:hidden;">		
+                <li><a class="main-link-customer_vendor-trans">Transactions</a></li>
+                <li><a>Reports</a></li>
+                <li><a>Setup</a></li>
+          </ul>          
+        </li>
+                
+                  <li id="reports"><a class="top selected">Reports</a> <span><img src="index.php_files/top_nav_img.png" alt=""></span>          
+          <ul class="dropdown" style="padding-left: 0;margin-top:0px;position: absolute;width:110px;padding-top:0px; visibility:hidden;">		
+                <li>
+                	<a class="main-link-reports-trans">Transactions</a>
+                    
+                </li>
+                <li><a>Reports</a></li>
+                <li><a>Setup</a></li>
+          </ul>
+          </li>
+         
+                <li id="purchasing"><a class="top selected">Purchasing</a> <span><img src="index.php_files/top_nav_img.png" alt=""></span>          
+            <ul class="dropdown" style="padding-left: 0;margin-top:0px;position: absolute;width:110px;padding-top:0px; visibility:hidden;">
+                    <li><a class="main-link-purchasing-trans">Transactions</a></li>
+                    <li><a>Reports</a></li>
+                    <li><a>Setup</a></li>
+            </ul>
+        </li>        
+                <li id="marketing"><a class="top selected">Marketing</a><span><img src="index.php_files/top_nav_img.png" alt=""></span>
+          
+          <ul class="dropdown" style="padding-left: 0;margin-top:0px;position: absolute;width:110px;padding-top:0px; visibility:hidden;">
+            <li>
+            	<a class="main-link-marketing-trans">Transactions</a>
+                
+            </li>            
+            <li><a>Reports</a></li>
+            <li><a>Setup</a></li>
+          </ul>
+          
+        </li>        
+         
+        <li id="account"><a class="top selected">Accounts </a><span><img src="index.php_files/top_nav_img.png" alt=""></span>
+            
+            <ul class="dropdown" style="padding-left: 0;margin-top:0px;position: absolute;width:110px;padding-top:0px; visibility:hidden;">
+                    <li><a class="main-link-account-trans">Transactions</a></li>
+                    <li><a>Reports</a></li>
+                    <li><a>Setup</a></li>
+            </ul>
+        </li>       
+                  <li id="users"><a class="top selected">Users</a><span><img src="index.php_files/top_nav_img.png" alt=""></span>
+          
+          <ul class="dropdown" style="padding-left: 0;margin-top:0px;position: absolute;width:110px;padding-top:0px; visibility:hidden;">
+                <li>
+                	<a class="main-link-users-trans">Transactions</a>
+                                       
+                </li>
+                <li><a>Reports</a></li>
+                <li><a>Setup</a></li>
+          </ul>
+          </li>
+         
+                        <li id="setting"><a class="top selected">Settings</a>       	
+          	<ul class="dropdown" style="padding-left: 0;margin-top:10px;position: absolute;width:110px;padding-top:0px; visibility:hidden;">
+                <li><a>Transactions</a></li>
+                <li><a>Reports</a></li>
+                <li><a class="main-link-setting-setup">Setup</a></li>
+          	</ul>
+        </li>
+      
+              <!--<li id="store" class="right"><a onClick="window.open('http://1group.co.nz/CorpconsDEVELOPMENT/');">Store Front</a><span><img src="view/image/top_nav_img.png" alt="" /></span></li>  -->
+        
+      <li id="store" style="float:right;"><a class="top" href="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=common/logout&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Logout</a></li>
+        
+          
+  </ul>
+  
+    
+ <div id="sub-link-bar" style="min-height: 34px; height: 37px;"> </div>
+ <!-- End sub-link-bar -->
+ </div>
+ 
+   <script type="text/javascript"><!--
+
+ 
+function getURLVar(urlVarName) {
+	var urlHalves = String(document.location).toLowerCase().split('?');
+	var urlVarValue = '';
+	
+	if (urlHalves[1]) {
+		var urlVars = urlHalves[1].split('&');
+
+		for (var i = 0; i <= (urlVars.length); i++) {
+			if (urlVars[i]) {
+				var urlVarPair = urlVars[i].split('=');
+				
+				if (urlVarPair[0] && urlVarPair[0] == urlVarName.toLowerCase()) {
+					urlVarValue = urlVarPair[1];
+				}
+			}
+		}
+	}
+	
+	return urlVarValue;
+}
+
+function displayContent(tabs_id,my_url)
+{
+	$('body').append('<li id="'+tabs_id+'" style="padding:0px; margin:0px;"><iframe class="myIframe" name="iframe_'+tabs_id+'" id="iframe_'+tabs_id+'" border="0" width="100%" style="border:0px; overflow:hidden;" src="'+my_url+'"></iframe></li>');
+	
+} 
+var iframeids=["iframe[id*='iframe_']"]
+
+//Should script hide iframe from browsers that don't support this script (non IE5+/NS6+ browsers. Recommended):
+var iframehide="yes"
+
+var getFFVersion=navigator.userAgent.substring(navigator.userAgent.indexOf("Firefox")).split("/")[1]
+var FFextraHeight=parseFloat(getFFVersion)>=0.1? 16 : 0 //extra height in px to add to iframe in FireFox 1.0+ browsers
+
+function resizeCaller() {
+	//alert(iframeids);
+var dyniframe=new Array()
+for (i=0; i<iframeids.length; i++){
+if (document.getElementById)
+resizeIframe(iframeids[i])
+//alert(iframeids[i]);
+
+//reveal iframe for lower end browsers? (see var above):
+if ((document.all || document.getElementById) && iframehide=="no"){
+var tempobj=document.all? document.all[iframeids[i]] : document.getElementById(iframeids[i])
+tempobj.style.display="block"
+}
+}
+}
+
+function resizeIframe(iframeids){
+	
+	
+var currentfr=document.getElementById(iframeids)
+
+if (currentfr && !window.opera){
+currentfr.style.display="block"
+if (currentfr.contentDocument && currentfr.contentDocument.body.offsetHeight) //ns6 syntax
+{currentfr.height = currentfr.contentDocument.body.offsetHeight+FFextraHeight; 
+
+}
+
+else if (currentfr.Document && currentfr.Document.body.scrollHeight) //ie5+ syntax
+{currentfr.height = currentfr.Document.body.scrollHeight;
+
+}
+
+if (currentfr.addEventListener)
+currentfr.addEventListener("load", readjustIframe, false)
+else if (currentfr.attachEvent){
+currentfr.detachEvent("onload", readjustIframe) // Bug fix line
+currentfr.attachEvent("onload", readjustIframe)
+
+
+}
+}
+}
+
+function readjustIframe(loadevt) {
+	
+var crossevt=(window.event)? event : loadevt
+var iframeroot=(crossevt.currentTarget)? crossevt.currentTarget : crossevt.srcElement
+if (iframeroot)
+resizeIframe(iframeroot.id);
+}
+
+function loadintoIframe(iframeid, url){
+	
+if (document.getElementById)
+document.getElementById(iframeid).src=url
+}
+
+if (window.addEventListener)
+window.addEventListener("load", resizeCaller, false)
+else if (window.attachEvent)
+window.attachEvent("onload", resizeCaller)
+else
+window.onload=resizeCaller
+ 
+
+$(document).ready(function() {
+	/*route = getURLVar('route');
+	
+	if (!route) {
+		$('#sale').addClass('select');
+	} else {
+		part = route.split('/');
+		
+		url = part[0];
+		
+		if (part[1]) {
+			url += '/' + part[1];
+		}
+		
+		$('a[href*=\'' + url + '\']').parents('li[id]').addClass('select');
+	}*/
+});
+
+//--></script> 
+</div>
+<link type="text/css" href="index.php_files/jquery-ui-1.css" rel="stylesheet">
+<div id="tabArray"><script type="text/javascript" language="javascript"> var tabsarray = []; var change_id_array = [];	</script></div>	
+<script type="text/javascript" src="index.php_files/jquery-ui.js"></script>
+<script type="text/javascript" src="index.php_files/jquery_004.js"></script>		
+<script type="text/javascript" src="index.php_files/sh.js"></script>
+<script type="text/javascript" src="index.php_files/sh_javascript.js"></script>
+<script type="text/javascript" src="index.php_files/sh_html.js"></script>
+<script type="text/javascript" src="index.php_files/jquery_init.js"></script>
+<div id="innercontent">
+
+  <div class="breadcrumb_header">
+        <a href="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=common/home&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Home</a>
+         :: <a href="http://1group.co.nz/CorpconsDEVELOPMENT/admin/index.php?route=dashboard/common&amp;token=ff1d9c7e753218313d2d8aebd0fe563d">Dashboard</a>
+      </div>
+  
+    
+    
+  <div class="box">   
+    	<div id="data_container" class="tabs">
+            <ul style="height:34px;" id="grid_ul">
+            	<li id="addTab-1-0001"><a id="tabs-0" href="#tabs-0-1">Dashboard</a></li>
+                <li id="temp_li">&nbsp;&nbsp;</li>	                
+            </ul>
+            <div id="tabs-0-1" style="padding:0px;"><iframe id="iframe_dashboard" class="myIframe" border="0" style="border: 0px none; overflow: hidden; height: 1700px; display: block;" src="index.php_files/index.htm" height="924px" scrolling="no" width="100%"></iframe></div>
+            <!--<script type="text/javascript">
+		
+			
+			 var userAgent = navigator.userAgent.toString().toLowerCase();
+			 var $contentHeight;
+			$("#iframe_dashboard").load(function() {
+			//	alert( $(this).attr('id') );
+			$contentHeight = $(this).contents().height();
+			
+			if (userAgent.indexOf('msie') != -1) {
+			   $contentHeight = $contentHeight+50;	
+			 
+			}
+			
+            $(this).css('height',$contentHeight+'px');
+						
+            });
+		 <!--	</script>-->
+          <script type="text/javascript">
+
+/***********************************************
+* IFrame SSI script II- © Dynamic Drive DHTML code library (http://www.dynamicdrive.com)
+* Visit DynamicDrive.com for hundreds of original DHTML scripts
+* This notice must stay intact for legal use
+***********************************************/
+
+//Input the IDs of the IFRAMES you wish to dynamically resize to match its content height:
+//Separate each ID with a comma. Examples: ["myframe1", "myframe2"] or ["myframe"] or [] for none:
+var iframeids=["iframe_dashboard"]
+
+//Should script hide iframe from browsers that don't support this script (non IE5+/NS6+ browsers. Recommended):
+var iframehide="yes"
+
+var getFFVersion=navigator.userAgent.substring(navigator.userAgent.indexOf("Firefox")).split("/")[1]
+var FFextraHeight=parseFloat(getFFVersion)>=0.1? 16 : 0 //extra height in px to add to iframe in FireFox 1.0+ browsers
+
+function resizeCaller() {
+	
+ var dyniframe=new Array()
+   for (i=0; i<iframeids.length; i++){
+     if (document.getElementById)
+       resizeIframe(iframeids[i])
+
+//reveal iframe for lower end browsers? (see var above):
+if ((document.all || document.getElementById) && iframehide=="no"){
+ var tempobj=document.all? document.all[iframeids[i]] : document.getElementById(iframeids[i])
+   tempobj.style.display="block"
+}
+}
+}
+
+function resizeIframe(iframeids){
+	
+ var currentfr=document.getElementById(iframeids)
+
+  if (currentfr && !window.opera){
+    currentfr.style.display="block"
+     if (currentfr.contentDocument && currentfr.contentDocument.body.offsetHeight) //ns6 syntax
+
+{
+	currentfr.height = currentfr.contentDocument.body.offsetHeight+FFextraHeight+30+'px'; 
+}
+
+
+
+else if (currentfr.Document && currentfr.Document.body.scrollHeight) //ie5+ syntax
+{ 
+currentfr.height = currentfr.Document.body.scrollHeight+30+'px';
+}
+
+
+
+if (currentfr.addEventListener)
+currentfr.addEventListener("load", readjustIframe, false)
+else if (currentfr.attachEvent){
+currentfr.detachEvent("onload", readjustIframe) // Bug fix line
+currentfr.attachEvent("onload", readjustIframe)
+
+
+}
+}
+}
+
+function readjustIframe(loadevt) {
+	
+var crossevt=(window.event)? event : loadevt
+var iframeroot=(crossevt.currentTarget)? crossevt.currentTarget : crossevt.srcElement
+if (iframeroot)
+resizeIframe(iframeroot.id);
+}
+
+function loadintoIframe(iframeid, url){
+	
+if (document.getElementById)
+document.getElementById(iframeid).src=url
+}
+
+if (window.addEventListener)
+window.addEventListener("load", resizeCaller, false)
+else if (window.attachEvent)
+window.attachEvent("onload", resizeCaller)
+else
+window.onload=resizeCaller
+
+</script>		
+
+			</div>
+   </div>
+   		     
+</div>
+</div></body></html>

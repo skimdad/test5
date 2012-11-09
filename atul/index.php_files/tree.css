@@ -1,0 +1,59 @@
+﻿a
+{
+    outline: none;
+}
+div.menuTree
+{
+    width: 200px;
+    border: solid 1px #cecece;
+}
+div.menuTree UL
+{
+    font-size: 100%;
+    padding: 0px;
+    margin: 0px;
+    display:none;
+}
+div.menuTree UL LI
+{
+    list-style: none;
+    padding: 0px;
+    padding-left: 14px;
+    margin: 0px;
+    white-space: nowrap;
+    line-height: 22px;
+}
+div.menuTree UL LI.parent A
+{
+    color: #003A88;
+    text-decoration: none;
+    padding: 0px 2px;
+}
+div.menuTree UL LI.parent A:hover
+{
+    font-weight: bold;
+    font-size: 100%;
+}
+div.menuTree UL LI.child A
+{
+    color: #003A88;
+    text-decoration: none;
+    padding: 0px 2px;
+}
+div.menuTree UL LI.child A:hover
+{
+    font-weight: bold;
+    font-size: 100%;
+}
+div.menuTree UL LI.child
+{
+    background: url(../image/elbow.gif) left top no-repeat;
+}
+div.menuTree UL LI.parent
+{
+    background: url(../image/collapsed_image.gif) 0px 2px no-repeat;
+}
+div.menuTree UL LI.expanded
+{
+    background: url(../image/expended_image.gif) 0px 2px no-repeat;
+}
